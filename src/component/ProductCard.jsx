@@ -10,8 +10,8 @@ const ProductCard = ({ item }) => {
 			<img src={item.img} alt="" />
 			{item.choice ? <div className="choice">choice</div> : ""}
 			<div>{item.title}</div>
-			<div>{item.price}</div>
-			<div className="new">new</div>
+			<div>₩ {item.price.toLocaleString(3)}</div>
+			{item.choice ? <div className="new">new</div> : ""}
 		</div>
 	);
 };

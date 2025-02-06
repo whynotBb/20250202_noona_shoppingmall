@@ -123,3 +123,35 @@ input[type="password"] {
 	background: #ddd;
 	cursor: pointer;
 }
+.product-detail-wr {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.product-detail-wr .img-bx img {
+	width: 100%;
+}
+.product-detail-wr > div {
+	flex: 1;
+}
+.product-detail-wr .tags {
+	display: flex;
+	gap: 10px;
+}
+.product-detail-wr .new,
+.product-detail-wr .choice {
+	background: #675cfc;
+	color: #fff;
+	padding: 0 10px;
+	font-size: 12px;
+	line-height: 25px;
+	height: 25px;
+	border-radius: 100px;
+}
+
+.product-detail-wr .new {
+	background: #dffc5c;
+	color: #222;
+}
