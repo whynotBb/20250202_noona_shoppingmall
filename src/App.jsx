@@ -11,15 +11,12 @@ function App() {
 	useEffect(() => {
 		console.log(authenticate);
 	}, [authenticate]);
-	const [search, setSearch] = useState("");
-	useEffect(() => {
-		console.log("search", search);
-	}, [search]);
+
 	return (
 		<div>
-			<Navbar authenticate={authenticate} setSearch={setSearch} />
+			<Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
 			<Routes>
-				<Route path="/" element={<ProductAll search={search} />} />
+				<Route path="/" element={<ProductAll />} />
 				<Route path="/login" element={<Login setAuthenticate={setAuthenticate} />} />
 				<Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} />
 			</Routes>

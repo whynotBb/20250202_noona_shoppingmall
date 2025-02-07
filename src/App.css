@@ -91,6 +91,15 @@ body {
 	background: #dffc5c;
 	color: #222;
 }
+@media (max-width: 768px) {
+	.product-wr {
+		flex-direction: column;
+		padding: 20px;
+	}
+	.product-card {
+		width: 100%;
+	}
+}
 .login-bx {
 	width: 100%;
 	max-width: 400px;

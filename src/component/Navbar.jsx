@@ -2,18 +2,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faCloud, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 
-const Navbar = ({ authenticate, setSearch }) => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
 	const navigate = useNavigate();
 	const menuList = ["woman", "men", "kids", "home"];
 	const goToLogin = () => {
-		navigate("/login");
+		if (authenticate) {
+			setAuthenticate(false);
+			navigate("/");
+		} else {
+			navigate("/login");
+		}
 	};
 
-	const [inputText, setInputText] = useState(); // search input 입력 값
 	const onKeyDown = (e) => {
-		e.key === "Enter" && setSearch(inputText);
+		if (e.key === "Enter") {
+			// input 의 value 를 가져와서 url 을 바꿔준다
+			// onClick 을 따로 쓸 필요가 없음 onKeyDown 에서 가져온 e 값으로 value 가져올 수 있음
+			const keyword = e.target.value;
+			navigate(`/?q=${keyword}`);
+		}
 	};
 	return (
 		<div>
@@ -34,7 +42,7 @@ const Navbar = ({ authenticate, setSearch }) => {
 				</ul>
 				<div className="search-bx">
 					<FontAwesomeIcon icon={faSearch} />
-					<input type="text" name="" id="" onChange={(e) => setInputText(e.target.value)} onKeyDown={onKeyDown} />
+					<input type="text" name="" id="" onKeyDown={(e) => onKeyDown(e)} />
 				</div>
 			</div>
 		</div>
