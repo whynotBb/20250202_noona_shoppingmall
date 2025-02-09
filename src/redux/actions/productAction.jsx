@@ -10,4 +10,14 @@ export const getProducts = (searchQuery) => {
   };
 };
 
-export const ProductAction = { getProducts };
+export const getProductDetail = (id) => {
+  return async (dispatch, getState) => {
+    let url = `http://localhost:5000/products/${id}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log("getProductDetail", data);
+    dispatch({ type: "GET_PRODUCTDETAIL_SUCCESS", payload: { productDetail: data } });
+  };
+};
+
+export const ProductAction = { getProducts, getProductDetail };
